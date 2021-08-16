@@ -5,11 +5,12 @@ _filename = 'timer_data.txt'
 def print_todays_practice_time():
     todays_time_studying = 0
     
-    # read data from file -- if it doesn't exist then create it
+    # read data from file. if it doesn't exist then create it
     with open(f'{_filename}', 'a+') as f:
-    # parse through the data and read in the records only for today
+        # 'seek' the beginning of the file (https://stackoverflow.com/questions/14639936/how-to-read-from-file-opened-in-a-mode)
+        f.seek(0)
         lines = f.readlines()
-    # go through each line, split it into an array, and look for today's date
+        # go through each line, split it into an array, and look for today's date
         for line in lines:
             record = line.split(',')
         # remove the newline character from the time
