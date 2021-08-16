@@ -1,13 +1,14 @@
 import time
 import datetime
+import os
 
 # Display how much studying has been completed today
 def print_todays_practice_time():
     FILENAME = 'timer_data.txt'
     todays_time_studying = 0
     
-    # read data from file
-    with open(f'{FILENAME}', 'r') as f:
+    # read data from file -- if it doesn't exist then create it'
+    with open(f'{FILENAME}', 'a+') as f:
     # parse through the data and read in the records only for today
         lines = f.readlines()
     # go through each line, split it into an array, and look for today's date
