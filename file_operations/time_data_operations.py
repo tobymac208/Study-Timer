@@ -1,34 +1,7 @@
 import datetime
-## File Operations for goal.txt file ##
-_goal_filename = 'goal.txt'
-""" Read in the 'study time goal' for the user 
+from file_operations import user_goal_operations
 
-    Returns: time goal
-"""
-def retrieve_goal():
-    goal = 0
-    # open the file. 'a+' is for if the file doesn't exist
-    with open(_goal_filename, 'a+') as f:
-        # go to the first character and then read the goal
-        f.seek(0)
-        goal_read = f.read().strip()
-        if goal_read == '':
-            goal = 0
-        else:
-            float(goal_read)
-    # give the caller the goal
-    return goal
-""" Write the user's time goal to the file """
-def write_goal(goal):
-    with open(_goal_filename, 'w') as f:
-        f.write(str(goal))
-""" Get the user's study goal """
-def request_goal():
-    print('It appears you haven\'t set a goal. \nLet\'s set a goal so you know where you stand!')
-    goal = float(input('Your goal (in minutes): '))
-
-    return goal
-
+# Defines methods for managing the tracking of the user's time
 ## File Operations for timer_data.txt file ##
 _filename = 'timer_data.txt'
 """ Display how much studying has been completed today """
@@ -53,13 +26,13 @@ def print_todays_practice_time():
     
     # TODO: Refactor to follow DRY
     # grab the user's goal and check if they've met it
-    the_users_goal = retrieve_goal()
+    the_users_goal = user_goal_operations.retrieve_goal()
     # the user hasn't set a goal yet
     if the_users_goal == 0:
         # request the goal and write the goal to the file
-        write_goal(request_goal())
+        user_goal_operations.write_goal(user_goal_operations.request_goal())
         # attempt to retrieve the goal again
-        the_users_goal = retrieve_goal()
+        the_users_goal = user_goal_operations.retrieve_goal()
     
     # append this string to the end of each message
     achieved_goal = ''
