@@ -22,9 +22,6 @@ def retrieve_goal():
 def write_goal(goal):
     with open(_goal_filename, 'w') as f:
         f.write(str(goal))
-
-## File Operations for timer_data.txt file ##
-_filename = 'timer_data.txt'
 """ Get the user's study goal """
 def request_goal():
     print('It appears you haven\'t set a goal. \nLet\'s set a goal so you know where you stand!')
@@ -32,6 +29,8 @@ def request_goal():
 
     return goal
 
+## File Operations for timer_data.txt file ##
+_filename = 'timer_data.txt'
 """ Display how much studying has been completed today """
 def print_todays_practice_time():
     todays_time_studying = 0
