@@ -30,6 +30,7 @@ def print_todays_practice_time():
     else:
         print(f'You\'ve studied for {todays_time_studying:.2f} second(s) today')
 
+# show the user how much time they've studied today
 print_todays_practice_time()
 # start the timer and the loop
 start = time.time()
@@ -43,7 +44,7 @@ while True:
         break
 # calculate the time the program has run
 runtime = time.time() - start
-# print the time the program ran for
+# print the time the program ran
 if runtime > 60:
     print(f'You spent {runtime/60:.2f} minute(s)')
 elif runtime > 3600:
