@@ -1,6 +1,37 @@
 import datetime
+## File Operations for goal.txt file ##
+_goal_filename = 'goal.txt'
+""" Read in the 'study time goal' for the user 
 
+    Returns: time goal
+"""
+def retrieve_goal():
+    goal = 0
+    # open the file. 'a+' is for if the file doesn't exist
+    with open(_goal_filename, 'a+') as f:
+        # go to the first character and then read the goal
+        f.seek(0)
+        goal_read = f.read().strip()
+        if goal_read == '':
+            goal = 0
+        else:
+            float(goal_read)
+    # give the caller the goal
+    return goal
+""" Write the user's time goal to the file """
+def write_goal(goal):
+    with open(_goal_filename, 'w') as f:
+        f.write(str(goal))
+
+## File Operations for timer_data.txt file ##
 _filename = 'timer_data.txt'
+""" Get the user's study goal """
+def request_goal():
+    print('It appears you haven\'t set a goal. \nLet\'s set a goal so you know where you stand!')
+    goal = float(input('Your goal (in minutes): '))
+
+    return goal
+
 """ Display how much studying has been completed today """
 def print_todays_practice_time():
     todays_time_studying = 0
@@ -21,14 +52,30 @@ def print_todays_practice_time():
             if record_date == datetime.date.today():
                 todays_time_studying = todays_time_studying + float(record[1])
     
-    # print the current time worked today
     # TODO: Refactor to follow DRY
-    if todays_time_studying > 60 and todays_time_studying < 3600:
-        print(f'You\'ve studied for {todays_time_studying/60:.2f} minutes(s) today')
-    elif todays_time_studying > 3600:
-        print(f'You\'ve studied for {todays_time_studying/3600:.2f} hours(s) today')
+    # grab the user's goal and check if they've met it
+    the_users_goal = retrieve_goal()
+    # the user hasn't set a goal yet
+    if the_users_goal == 0:
+        # request the goal and write the goal to the file
+        write_goal(request_goal())
+        # attempt to retrieve the goal again
+        the_users_goal = retrieve_goal()
+    
+    # append this string to the end of each message
+    achieved_goal = ''
+    if todays_time_studying/60 >= the_users_goal:
+        achieved_goal = 'You\'ve achieved your goal! Congratulations!'
     else:
-        print(f'You\'ve studied for {todays_time_studying:.2f} second(s) today')
+        achieved_goal = 'You haven\'t achieved your goal. Keep up the work!'
+
+    # print the current time worked today
+    if todays_time_studying > 60 and todays_time_studying < 3600:
+        print(f'You\'ve studied for {todays_time_studying/60:.2f} minutes(s) today. {achieved_goal}')
+    elif todays_time_studying > 3600:
+        print(f'You\'ve studied for {todays_time_studying/3600:.2f} hours(s) today. {achieved_goal}')
+    else:
+        print(f'You\'ve studied for {todays_time_studying:.2f} second(s) today. {achieved_goal}')
 
 """ Write new record to file
 
