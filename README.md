@@ -9,3 +9,4 @@ If you'd just like to see how long you've studied and to not sudy anymore: <br/>
     - Press CTRL+C to close the app. <br />
 This will ensure you don't add anymore time to your timer for the day.
 ### NOTE: This app is very specific to computer science students, but it can be repurposed.
+It's (currently) specific to computer science students because most people don't want to bother with a terminal.
