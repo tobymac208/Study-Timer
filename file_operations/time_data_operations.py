@@ -25,12 +25,13 @@ def print_todays_practice_time():
                 todays_time_studying = todays_time_studying + float(record[1])
     
     # TODO: Refactor to follow DRY
+    # TODO: Fix '0' return for user's goal
     # grab the user's goal and check if they've met it
     the_users_goal = user_goal_operations.retrieve_goal()
     # the user hasn't set a goal yet
     if the_users_goal == 0:
         # request the goal and write the goal to the file
-        user_goal_operations.write_goal(user_goal_operations.request_goal_from_user())
+        user_goal_operations.write_go_to_file(user_goal_operations.request_goal_from_user())
         # attempt to retrieve the goal again
         the_users_goal = user_goal_operations.retrieve_goal()
     
