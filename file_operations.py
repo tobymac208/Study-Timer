@@ -32,7 +32,7 @@ def print_todays_practice_time():
 
 """ Write new record to file
 
-    Input Arguments: tunetime
+    Input Arguments: runtime
  """
 def write_new_record(runtime):
     # log the user's study time to the timer_data.txt
