@@ -30,7 +30,7 @@ def print_todays_practice_time():
     # the user hasn't set a goal yet
     if the_users_goal == 0:
         # request the goal and write the goal to the file
-        user_goal_operations.write_goal(user_goal_operations.request_goal())
+        user_goal_operations.write_goal(user_goal_operations.request_goal_from_user())
         # attempt to retrieve the goal again
         the_users_goal = user_goal_operations.retrieve_goal()
     

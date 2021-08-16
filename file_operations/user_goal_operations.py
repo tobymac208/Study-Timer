@@ -18,11 +18,11 @@ def retrieve_goal():
     # give the caller the goal
     return goal
 """ Write the user's time goal to the file """
-def write_goal(goal):
+def write_go_to_file(goal):
     with open(_goal_filename, 'w') as f:
         f.write(str(goal))
-""" Get the user's study goal """
-def request_goal():
+""" Get the user's study goal from the user. They haven't set it yet. """
+def request_goal_from_user():
     print('It appears you haven\'t set a goal. \nLet\'s set a goal so you know where you stand!')
     goal = float(input('Your goal (in minutes): '))
 
