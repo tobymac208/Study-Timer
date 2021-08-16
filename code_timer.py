@@ -1,9 +1,9 @@
 import time
 import datetime
-import fileoperations
+import file_operations
 
 # show the user how much time they've studied today
-fileoperations.print_todays_practice_time()
+file_operations.print_todays_practice_time()
 
 # start the timer and the loop
 start = time.time()
@@ -29,4 +29,4 @@ else:
 # Print the date
 print(f'Today\'s date is {datetime.date.today()}')
 
-fileoperations.write_new_record(runtime)
+file_operations.write_new_record(runtime)
