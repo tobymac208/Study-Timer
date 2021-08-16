@@ -11,9 +11,8 @@ while True:
     # get the choice from the user
     print('enter \'end\' to end the timer')
     val = input()
-    print(time.time() - start)
+    # the user chose to end the timer
     if val == 'end':
-        # end the timer
         break
 
 # calculate the time the program has run
