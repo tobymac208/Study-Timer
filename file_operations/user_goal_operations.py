@@ -1,3 +1,5 @@
+from file_operations import create_directory
+
 # Defines methods for the user to set their own goals for using this application.
 _goal_filename = 'raw_data/goal.txt'
 """ Read in the 'study time goal' for the user 
@@ -7,7 +9,7 @@ _goal_filename = 'raw_data/goal.txt'
 def retrieve_goal():
     goal = 0
     # open the file. 'a+' is for if the file doesn't exist
-    with open(_goal_filename, 'a+') as f:
+    with create_directory.safe_open_read(_goal_filename) as f:
         try:
             # go to the first character and then read the goal
             f.seek(0)

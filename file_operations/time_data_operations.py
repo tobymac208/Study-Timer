@@ -1,15 +1,17 @@
 import datetime
 from file_operations import user_goal_operations
+from file_operations import create_directory
 
 # Defines methods for managing the tracking of the user's time
 ## File Operations for timer_data.txt file ##
-_filename = 'timer_data.txt'
+_filename = 'raw_data/timer_data.txt'
 """ Display how much studying has been completed today """
 def print_todays_practice_time():
+    # time tracker for the day's studying
     todays_time_studying = 0
     
     # read data from file. if it doesn't exist then create it
-    with open(f'{_filename}', 'a+') as f:
+    with create_directory.safe_open_read(_filename) as f:
         # 'seek' the beginning of the file (https://stackoverflow.com/questions/14639936/how-to-read-from-file-opened-in-a-mode)
         f.seek(0)
         lines = f.readlines()
@@ -55,5 +57,5 @@ def print_todays_practice_time():
  """
 def write_new_record(runtime):
     # log the user's study time to the timer_data.txt
-    with open(f'{_filename}', 'a') as f:
+    with open(f'{_filename}', 'a+') as f:
         f.write(f'{datetime.date.today()},{runtime:.2f}\n')
