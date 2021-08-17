@@ -10,11 +10,7 @@ def retrieve_goal():
     with open(_goal_filename, 'a+') as f:
         # go to the first character and then read the goal
         f.seek(0)
-        goal_read = f.read().strip()
-        if goal_read == '':
-            goal = 0
-        else:
-            float(goal_read)
+        goal = float(f.read().strip())
     # give the caller the goal
     return goal
 """ Write the user's time goal to the file """
