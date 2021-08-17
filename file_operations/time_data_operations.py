@@ -25,7 +25,6 @@ def print_todays_practice_time():
                 todays_time_studying = todays_time_studying + float(record[1])
     
     # TODO: Refactor to follow DRY
-    # TODO: Fix '0' return for user's goal
     # grab the user's goal and check if they've met it
     the_users_goal = user_goal_operations.retrieve_goal()
     # the user hasn't set a goal yet
