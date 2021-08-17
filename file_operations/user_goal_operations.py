@@ -1,5 +1,5 @@
 # Defines methods for the user to set their own goals for using this application.
-_goal_filename = 'goal.txt'
+_goal_filename = 'raw_data/goal.txt'
 """ Read in the 'study time goal' for the user 
 
     Returns: time goal
@@ -8,9 +8,13 @@ def retrieve_goal():
     goal = 0
     # open the file. 'a+' is for if the file doesn't exist
     with open(_goal_filename, 'a+') as f:
-        # go to the first character and then read the goal
-        f.seek(0)
-        goal = float(f.read().strip())
+        try:
+            # go to the first character and then read the goal
+            f.seek(0)
+            goal = float(f.read().strip())
+        except ValueError as e:
+            # there was no goal found
+            goal = 0
     # give the caller the goal
     return goal
 """ Write the user's time goal to the file """
