@@ -3,7 +3,7 @@ import datetime
 from file_operations import time_data_operations
 
 # show the user how much time they've studied today
-time_data_operations.print_todays_practice_time()
+time_data_operations.print_todays_practice_progress()
 
 # start the timer and the loop
 start = time.time()

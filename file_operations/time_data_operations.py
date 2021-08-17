@@ -1,12 +1,12 @@
 import datetime
 from file_operations import user_goal_operations
 from file_operations import create_directory
-
-# Defines methods for managing the tracking of the user's time
 ## File Operations for timer_data.txt file ##
 _filename = 'raw_data/timer_data.txt'
-""" Display how much studying has been completed today """
-def print_todays_practice_time():
+
+
+""" Grab all of the current day's time and return it to the user """
+def retrieve_todays_practice_time():
     # time tracker for the day's studying
     todays_time_studying = 0
     
@@ -15,41 +15,34 @@ def print_todays_practice_time():
         # 'seek' the beginning of the file (https://stackoverflow.com/questions/14639936/how-to-read-from-file-opened-in-a-mode)
         f.seek(0)
         lines = f.readlines()
-        # go through each line, split it into an array, and look for today's date
         for line in lines:
             record = line.split(',')
-        # remove the newline character from the time
             record[1] = record[1].strip()
-        # convert date string to date
             record_date = datetime.datetime.strptime(record[0], '%Y-%m-%d').date()
         # if they studied today, it will be added to our 'time_studying' counter
             if record_date == datetime.date.today():
                 todays_time_studying = todays_time_studying + float(record[1])
-    
-    # TODO: Refactor to follow DRY
-    # grab the user's goal and check if they've met it
-    the_users_goal = user_goal_operations.retrieve_goal()
-    # the user hasn't set a goal yet
-    if the_users_goal == 0:
-        # request the goal and write the goal to the file
-        user_goal_operations.write_go_to_file(user_goal_operations.request_goal_from_user())
-        # attempt to retrieve the goal again
-        the_users_goal = user_goal_operations.retrieve_goal()
-    
-    # append this string to the end of each message
-    achieved_goal = ''
-    if todays_time_studying/60 >= the_users_goal:
-        achieved_goal = 'You\'ve achieved your goal! Congratulations!'
-    else:
-        achieved_goal = 'You haven\'t achieved your goal. Keep up the work!'
+    return todays_time_studying
 
-    # print the current time worked today
-    if todays_time_studying > 60 and todays_time_studying < 3600:
-        print(f'You\'ve studied for {todays_time_studying/60:.2f} minutes(s) today. {achieved_goal}')
-    elif todays_time_studying > 3600:
-        print(f'You\'ve studied for {todays_time_studying/3600:.2f} hours(s) today. {achieved_goal}')
+
+""" Display how much studying has been completed today """
+def print_todays_practice_progress():
+    # grab the user's progress time for today
+    todays_study_time = retrieve_todays_practice_time()
+
+    # compare the user's goal with their time spent studying
+    has_made_daily_goal = user_goal_operations.has_made_goal(todays_study_time)
+    # message for if the user has met their goal
+    goal_message = ''
+
+    # TODO: DRY compliance!!!!!
+    if todays_study_time > 60 and todays_study_time < 3600:
+        print(f'You\'ve studied for {todays_study_time/60:.2f} minutes(s) today. {has_made_daily_goal}')
+    elif todays_study_time > 3600:
+        print(f'You\'ve studied for {todays_study_time/3600:.2f} hours(s) today. {has_made_daily_goal}')
     else:
-        print(f'You\'ve studied for {todays_time_studying:.2f} second(s) today. {achieved_goal}')
+        print(f'You\'ve studied for {todays_study_time:.2f} second(s) today. {has_made_daily_goal}')
+
 
 """ Write new record to file
 
