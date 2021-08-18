@@ -32,16 +32,21 @@ def print_todays_practice_progress():
 
     # compare the user's goal with their time spent studying
     has_made_daily_goal = user_goal_operations.has_made_goal(todays_study_time)
+
     # message for if the user has met their goal
     goal_message = ''
+    if has_made_daily_goal:
+        goal_message = 'Congratulations! You made your daily goal.'
+    else:
+        goal_message = 'Keep working at your goal!'
 
     # TODO: DRY compliance!!!!!
     if todays_study_time > 60 and todays_study_time < 3600:
-        print(f'You\'ve studied for {todays_study_time/60:.2f} minutes(s) today. {has_made_daily_goal}')
+        print(f'You\'ve studied for {todays_study_time/60:.2f} minutes(s) today. \n{goal_message}')
     elif todays_study_time > 3600:
-        print(f'You\'ve studied for {todays_study_time/3600:.2f} hours(s) today. {has_made_daily_goal}')
+        print(f'You\'ve studied for {todays_study_time/3600:.2f} hours(s) today. \n{goal_message}')
     else:
-        print(f'You\'ve studied for {todays_study_time:.2f} second(s) today. {has_made_daily_goal}')
+        print(f'You\'ve studied for {todays_study_time:.2f} second(s) today. \n{goal_message}')
 
 
 """ Write new record to file
