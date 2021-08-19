@@ -1,7 +1,6 @@
 import time
 import datetime
 from file_operations import time_data_operations
-
 # show the user how much time they've studied today
 time_data_operations.print_todays_practice_progress()
 
@@ -25,7 +24,9 @@ elif runtime > 3600:
     print(f'You spent {runtime/3600:.2f} hour(s)')
 else:
     print(f'You spent {runtime:.2f} second(s)')
+
 # Print the date
 print(f'Today\'s date is {datetime.date.today()}')
 
+# file away the new data
 time_data_operations.write_new_record(runtime)
