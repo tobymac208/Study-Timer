@@ -2,6 +2,7 @@
 import os, os.path
 import errno
 
+
 ## Create directories to path if they don't exist ##
 # https://stackoverflow.com/questions/23793987/write-file-to-a-directory-that-doesnt-exist #
 def mkdir_path(path_to_create):
@@ -13,6 +14,7 @@ def mkdir_path(path_to_create):
         if exception.errno != errno.EEXIST and os.path.isdir(path_to_create):
             pass
         else: raise
+
 
 ## Safely write to a file, first ensuring the path exists ##
 def safe_open_read(path):
