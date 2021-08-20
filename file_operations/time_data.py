@@ -1,5 +1,5 @@
 import datetime
-from file_operations import user_goal_operations
+from file_operations import user_goal
 from file_operations import create_directory
 ## File Operations for timer_data.txt file ##
 _filename = 'raw_data/timer_data.txt'
@@ -31,7 +31,7 @@ def print_todays_practice_progress():
     todays_study_time = retrieve_todays_practice_time()
 
     # compare the user's goal with their time spent studying
-    has_made_daily_goal = user_goal_operations.has_made_goal(todays_study_time)
+    has_made_daily_goal = user_goal.has_made_goal(todays_study_time)
 
     # message for if the user has met their goal
     goal_message = ''

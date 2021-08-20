@@ -1,11 +1,11 @@
 import time
 import datetime
-from file_operations import time_data_operations
+from file_operations import time_data
 
 
 def main():
     # show the user how much time they've studied today
-    time_data_operations.print_todays_practice_progress()
+    time_data.print_todays_practice_progress()
 
     # start the timer and the loop
     start = time.time()
@@ -32,7 +32,7 @@ def main():
     print(f'Today\'s date is {datetime.date.today()}')
 
     # file away the new data
-    time_data_operations.write_new_record(runtime)
+    time_data.write_new_record(runtime)
 
 
 if __name__ == "__main__":

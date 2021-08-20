@@ -1,6 +1,6 @@
-from file_operations import time_data_operations
+from file_operations.time_data import print_todays_practice_progress
 
 
 if __name__ == "__main__":
     # show the user how much time they've studied today
-    time_data_operations.print_todays_practice_progress()
+    print_todays_practice_progress()
