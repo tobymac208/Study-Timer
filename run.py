@@ -29,7 +29,7 @@ def main():
         print(f'You spent {runtime:.2f} second(s)')
 
     # Print the date
-    print(f'Today\'s date is {datetime.date.today()}')
+    print(f'It is currently {datetime.datetime.now()}')
 
     # file away the new data
     time_data.write_new_record(runtime)
