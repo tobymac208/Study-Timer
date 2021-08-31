@@ -7,14 +7,16 @@ def main():
     # show the user how much time they've studied today
     time_data.print_todays_practice_progress()
 
+    exit_string = '(e)nd'
+
     # start the timer and the loop
     start = time.time()
     while True:
         # get the choice from the user
-        print('enter \'end\' to end the timer')
+        print(f"enter '{exit_string}' to end the timer")
         val = input()
         # the user chose to end the timer
-        if val == 'end':
+        if val.lower() == 'end' or val.lower() == 'e':
             break
 
     # calculate the time the program has run
