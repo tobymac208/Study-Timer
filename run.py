@@ -36,6 +36,8 @@ def main():
     # file away the new data
     time_data.write_new_record(runtime)
 
+    time_data.print_study_record_all()
+
 
 if __name__ == "__main__":
     main()

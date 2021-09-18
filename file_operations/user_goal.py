@@ -39,8 +39,6 @@ def request_goal_from_user():
 """ Compare the goal and today's study time. 
     returns: boolean for if they have made their time or not
 """
-
-
 def has_made_goal(todays_time_studying):
     users_goal = retrieve_goal()
     made_goal = False
