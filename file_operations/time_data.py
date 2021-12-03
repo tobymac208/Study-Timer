@@ -90,7 +90,7 @@ def print_study_record_all():
         print('*___________________________________*')
 
 
-def print_weeks_work():
+def print_all_work():
     '''
         Previous week's worth of work.
         Prints the last seven days' worth of studying.
