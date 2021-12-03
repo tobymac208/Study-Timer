@@ -1,6 +1,8 @@
 import time
-from datetime import date
+import os
 import datetime
+
+from datetime import date
 from file_operations import time_data
 
 
@@ -22,6 +24,8 @@ def main():
         # the user chose to end the timer
         if val.lower() == 'end' or val.lower() == 'e':
             break
+        elif val.lower() == 'cls' or val.lower() == 'clear':
+            os.system('clear')
 
     # calculate the time the program has run
     runtime = time.time() - start
