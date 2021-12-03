@@ -114,4 +114,4 @@ def print_all_work():
     print('*-------------------------------------*')
     for key in study_dictionary:
         count += 1
-        print(f'{count}.{key}={study_dictionary[key]:.2f}')
+        print(f'{count}. {key}={study_dictionary[key]:.2f}')
