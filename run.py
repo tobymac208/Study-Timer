@@ -1,16 +1,20 @@
 import time
+from datetime import date
 import datetime
 from file_operations import time_data
 
 
 def main():
     # show the user how much time they've studied today
+    print('*-----------------------------------*')
     time_data.print_todays_practice_progress()
-
+    print('*-----------------------------------*')
+    print(
+        f'It\'s currently { datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S") }')
     exit_string = '(e)nd'
-
     # start the timer and the loop
     start = time.time()
+
     while True:
         # get the choice from the user
         print(f"enter '{exit_string}' to end the timer")
@@ -35,8 +39,6 @@ def main():
 
     # file away the new data
     time_data.write_new_record(runtime)
-
-    time_data.print_study_record_all()
 
 
 if __name__ == "__main__":
