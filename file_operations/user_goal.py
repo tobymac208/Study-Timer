@@ -7,6 +7,8 @@ _goal_filename = 'raw_data/goal.txt'
 
     Returns: time goal
 """
+
+
 def retrieve_goal():
     goal = 0
     # open the file. 'a+' is for if the file doesn't exist
@@ -23,12 +25,16 @@ def retrieve_goal():
 
 
 """ Write the user's time goal to the file """
+
+
 def write_goal_to_file(goal):
     with open(_goal_filename, 'w') as f:
         f.write(str(goal))
 
 
 """ Get the user's study goal from the user. They haven't set it yet. """
+
+
 def request_goal_from_user():
     print('It appears you haven\'t set a goal. \nLet\'s set a goal so you know where you stand!')
     goal = float(input('Your goal (in minutes): '))
@@ -39,6 +45,8 @@ def request_goal_from_user():
 """ Compare the goal and today's study time. 
     returns: boolean for if they have made their time or not
 """
+
+
 def has_made_goal(todays_time_studying):
     users_goal = retrieve_goal()
     made_goal = False
@@ -49,7 +57,7 @@ def has_made_goal(todays_time_studying):
         write_goal_to_file(request_goal_from_user())
         # attempt to retrieve the goal again
         users_goal = retrieve_goal()
-    
+
     if todays_time_studying/60 >= users_goal:
         made_goal = True
 
