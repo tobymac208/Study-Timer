@@ -2,15 +2,8 @@ import datetime
 from file_operations import user_goal
 from file_operations import create_directory
 from utility import formatting
-## File Operations for timer_data.txt file ##
+
 _filename = 'raw_data/timer_data.txt'
-
-
-"""
-    Returns all practice time in records.
-    Each record will read in as-is and be organized by date.
-    Assume the dates are in proper order.
-"""
 
 
 def retrieve_todays_practice_time():
@@ -35,10 +28,10 @@ def retrieve_todays_practice_time():
     return todays_time_studying
 
 
-""" Display how much studying has been completed today """
-
-
 def print_todays_practice_progress():
+    """ 
+    Display how much studying has been completed today
+    """
     # grab the user's progress time for today
     todays_study_time = retrieve_todays_practice_time()
 
@@ -64,38 +57,20 @@ def print_todays_practice_progress():
             f'You\'ve studied for {todays_study_time:.2f} second(s) today. \n{goal_message}')
 
 
-""" Write new record to file
-
-    Input Arguments: runtime
- """
-
-
 def write_new_record(runtime):
+    """ 
+    Write new record to file
+    Input Arguments: runtime
+    """
     # log the user's study time to the timer_data.txt
     with open(_filename, 'a+') as f:
         f.write(f'{datetime.date.today()},{runtime:.2f}\n')
 
 
-"""
-    Prints detailed summary of how much the user has been studying.
-"""
-
-
-def print_study_record_all():
-    # read practice time from all of time
-    all_practice = retrieve_all_practice_time()
-    print(len(all_practice))
-
-    for lst in all_practice:
-        for tpl in lst:
-            print(f'{tpl[0]} <><><><><> {tpl[1]}')
-        print('*___________________________________*')
-
-
 def print_all_work():
     '''
-        Previous week's worth of work.
-        Prints the last seven days' worth of studying.
+    Previous week's worth of work.
+    Prints the last seven days' worth of studying.
     '''
     study_dictionary = {}
 
