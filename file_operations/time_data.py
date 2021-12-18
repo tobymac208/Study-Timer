@@ -1,6 +1,7 @@
 import datetime
 from file_operations import user_goal
 from file_operations import create_directory
+from utility import formatting
 ## File Operations for timer_data.txt file ##
 _filename = 'raw_data/timer_data.txt'
 
@@ -11,10 +12,11 @@ _filename = 'raw_data/timer_data.txt'
     Assume the dates are in proper order.
 """
 
-## Grab all of the current day's time and return it to the user ##
-
 
 def retrieve_todays_practice_time():
+    '''
+    Grab all of the current day's time and return it to the user
+    '''
     # time tracker for the day's studying
     todays_time_studying = 0
 
@@ -114,4 +116,6 @@ def print_all_work():
     print('*-------------------------------------*')
     for key in study_dictionary:
         count += 1
-        print(f'{count}. {key}={study_dictionary[key]:.2f}')
+        # Print the date with formatted times.
+        print(
+            f'{count}. {key}={formatting.format_seconds_to_hms(study_dictionary[key])}')

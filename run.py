@@ -4,6 +4,7 @@ import datetime
 
 from datetime import date
 from file_operations import time_data
+from utility import formatting
 
 
 def main():
@@ -31,12 +32,8 @@ def main():
     runtime = time.time() - start
 
     # print the time the program ran
-    if runtime > 60:
-        print(f'You spent {runtime/60:.2f} minute(s)')
-    elif runtime > 3600:
-        print(f'You spent {runtime/3600:.2f} hour(s)')
-    else:
-        print(f'You spent {runtime:.2f} second(s)')
+    formatted_runtime = formatting.format_seconds_to_hms(runtime)
+    print(formatted_runtime)
 
     # Print the date
     print(f'It is currently {datetime.datetime.now()}')
