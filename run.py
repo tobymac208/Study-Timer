@@ -2,7 +2,6 @@ import time
 import os
 import datetime
 
-from datetime import date
 from file_operations import time_data
 from utility import formatting
 
