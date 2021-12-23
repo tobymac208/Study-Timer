@@ -7,6 +7,9 @@ from utility import formatting
 
 
 def main():
+    end_conditions = ['end', 'e']
+    clear_conditions = ['cls', 'clear']
+
     # show the user how much time they've studied today
     print('*-----------------------------------*')
     time_data.print_todays_practice_progress()
@@ -20,11 +23,11 @@ def main():
     while True:
         # get the choice from the user
         print(f"enter '{exit_string}' to end the timer")
-        val = input()
+        val = input().lower()
         # the user chose to end the timer
-        if val.lower() == 'end' or val.lower() == 'e':
+        if val in end_conditions:
             break
-        elif val.lower() == 'cls' or val.lower() == 'clear':
+        elif val in clear_conditions:
             os.system('clear')
 
     # calculate the time the program has run
