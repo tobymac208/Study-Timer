@@ -10,9 +10,9 @@ def main():
     end_conditions = ['end', 'e']
     clear_conditions = ['cls', 'clear']
     # Pomodoro Technique implementation
-    TWENTY_FIVE_MINUTES_IN_SECONDS = 2
+    TWENTY_FIVE_MINUTES_IN_SECONDS = 25 * 60
     # set the amount of seconds in break time
-    BREAK_TIME = 2
+    BREAK_TIME = 5 * 60
 
     # show the user how much time they've studied today
     print('*-----------------------------------*')
