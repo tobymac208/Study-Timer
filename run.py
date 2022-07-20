@@ -1,6 +1,7 @@
 import time
 import os
 import datetime
+from playsound import playsound
 
 from file_operations import time_data
 from utility import formatting
@@ -25,7 +26,9 @@ def main():
     pomodoro_start = time.time()
     # tracker for how many minute studied. I have to do this due to pauses in the code.
     total_time_studied = 0
-
+    
+    # play sound effect for the beginning of the loop
+    playsound('./sounds/yeah-boy-memes-comedy-funny-amusing-jokes-114748.mp3')
     while True:
         # update the tracker's count
         pomodoro_tracker = time.time()
@@ -35,6 +38,8 @@ def main():
             # add 25 minutes to total time studied
             total_time_studied += TWENTY_FIVE_MINUTES_IN_SECONDS
 
+            # play sound effect to alert the user
+            playsound('./sounds/pixel-death-66829.mp3')
             print("Warning: 5-minute break time!")
             
             # pause the program for 5 minutes
@@ -47,6 +52,7 @@ def main():
             # check if the user's response is equal to anything in these lists
             if(continue_studying_check.lower() in ['yes', 'y', 'yeah', 'sure']):
                 # reset the start of the time tracking to the current time. example: 35 (pomodoro_tracker) - 35 (pomodoro_start) = 0
+                playsound('./sounds/yeah-boy-memes-comedy-funny-amusing-jokes-114748.mp3')
                 pomodoro_start = time.time()
             elif(continue_studying_check.lower() in ['no', 'n', 'never', 'nah']):
                 break
