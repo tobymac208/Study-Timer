@@ -10,3 +10,5 @@ If you'd just like to see how long you've studied and to not sudy anymore: <br/>
 This will ensure you don't add anymore time to your timer for the day.
 ### NOTE: This app is very specific to computer science students, but it can be repurposed.
 It's (currently) specific to computer science students because most people don't want to bother with a terminal.
+### The Pomodoro Update
+Recently, I updated the code to only allow for tracking of time with the Pomodoro study technique. This means you must study for 25 minutes and then have a 5-minute break. In order to get around this, you can still use the "log time" script to add in your study times manually.
