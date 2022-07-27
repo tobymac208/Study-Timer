@@ -8,10 +8,13 @@ from utility import formatting
 
 
 def main():
+    MINUTES_TO_STUDY = 25
+    MINUTES_FOR_BREAK = 5
+
     # Pomodoro Technique implementation
-    STUDY_TIME = 10
+    STUDY_TIME = MINUTES_TO_STUDY * 60
     # set the amount of seconds in break time
-    BREAK_TIME = 1
+    BREAK_TIME = MINUTES_FOR_BREAK * 60
 
     # show the user how much time they've studied today
     print('*-----------------------------------*')
@@ -23,7 +26,7 @@ def main():
     pomodoro_start = time.time()
     # tracker for how many minute studied. I have to do this due to pauses in the code.
     total_time_studied = 0
-    
+
     # play sound effect for the beginning of the loop
     playsound('./sounds/yeah-boy-memes-comedy-funny-amusing-jokes-114748.mp3')
     while True:
@@ -38,18 +41,22 @@ def main():
             # play sound effect to alert the user
             playsound('./sounds/pixel-death-66829.mp3')
             print("Warning: 5-minute break time!")
-            
+
             # pause the program for 5 minutes
             for _ in range(BREAK_TIME):
                 time.sleep(1)
-            
+
             # after each break, check if the user wants to keep studyig
-            continue_studying_check = input("Hello, again. Would you like to keep studying (yes/no)? ").strip()
+            continue_studying_check = input(
+                "Hello again! Would you like to keep studying (yes/no)? ").strip()
 
             # check if the user's response is equal to anything in these lists
             if(continue_studying_check.lower() in ['yes', 'y', 'yeah', 'sure']):
                 # reset the start of the time tracking to the current time. example: 35 (pomodoro_tracker) - 35 (pomodoro_start) = 0
-                playsound('./sounds/yeah-boy-memes-comedy-funny-amusing-jokes-114748.mp3')
+                print(
+                    f'It\'s currently { datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S") }')
+                playsound(
+                    './sounds/yeah-boy-memes-comedy-funny-amusing-jokes-114748.mp3')
                 pomodoro_start = time.time()
             elif(continue_studying_check.lower() in ['no', 'n', 'never', 'nah']):
                 break
