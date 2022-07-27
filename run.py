@@ -8,12 +8,10 @@ from utility import formatting
 
 
 def main():
-    end_conditions = ['end', 'e']
-    clear_conditions = ['cls', 'clear']
     # Pomodoro Technique implementation
-    TWENTY_FIVE_MINUTES_IN_SECONDS = 25 * 60
+    STUDY_TIME = 10
     # set the amount of seconds in break time
-    BREAK_TIME = 5 * 60
+    BREAK_TIME = 1
 
     # show the user how much time they've studied today
     print('*-----------------------------------*')
@@ -21,7 +19,6 @@ def main():
     print('*-----------------------------------*')
     print(
         f'It\'s currently { datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S") }')
-    exit_string = '(e)nd'
     # a counter to check where the time is sitting. It will reset each time a break has occured.
     pomodoro_start = time.time()
     # tracker for how many minute studied. I have to do this due to pauses in the code.
@@ -33,10 +30,10 @@ def main():
         # update the tracker's count
         pomodoro_tracker = time.time()
 
-        # checks if the user has been studying for twenty five minutes!
-        if pomodoro_tracker - pomodoro_start == TWENTY_FIVE_MINUTES_IN_SECONDS:
+        # checks if the user has been studying for a study period.
+        if pomodoro_tracker - pomodoro_start >= STUDY_TIME:
             # add 25 minutes to total time studied
-            total_time_studied += TWENTY_FIVE_MINUTES_IN_SECONDS
+            total_time_studied += STUDY_TIME
 
             # play sound effect to alert the user
             playsound('./sounds/pixel-death-66829.mp3')
