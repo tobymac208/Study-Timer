@@ -8,7 +8,7 @@ from utility import formatting
 
 
 def main():
-    MINUTES_TO_STUDY = 25
+    MINUTES_TO_STUDY = 60
     MINUTES_FOR_BREAK = 5
 
     # Pomodoro Technique implementation
@@ -40,7 +40,7 @@ def main():
 
             # play sound effect to alert the user
             playsound('./sounds/pixel-death-66829.mp3')
-            print("Warning: 5-minute break time!")
+            print(f"Warning: {MINUTES_FOR_BREAK}-minute break time!")
 
             # pause the program for 5 minutes
             for _ in range(BREAK_TIME):
