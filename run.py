@@ -8,7 +8,7 @@ from utility import formatting
 
 
 def main():
-    MINUTES_TO_STUDY = 60
+    MINUTES_TO_STUDY = 30
     MINUTES_FOR_BREAK = 5
 
     # Pomodoro Technique implementation
