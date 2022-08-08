@@ -9,6 +9,9 @@ from utility import formatting
 
 
 def main():
+    # DEBUG: I'm going to try this out! I've already backed up all data :)
+    time_data.clean_records()
+
     # check if the user passed a desired study time in minutes
     users_input = None
     

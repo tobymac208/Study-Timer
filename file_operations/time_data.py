@@ -78,13 +78,13 @@ def print_all_work():
     with create_directory.safe_open_read(_filename) as f:
         f.seek(0)
         for line in f.readlines():
-            date_study_time = line.split(',')
-            date_thats_being_analyzed = date_study_time[0]
-            study_time_thats_being_analyzed = float(date_study_time[1])
-            if date_thats_being_analyzed in study_dictionary:
-                study_dictionary[date_thats_being_analyzed] += study_time_thats_being_analyzed
+            time_digest = line.split(',')
+            time_digest_date = time_digest[0]
+            study_time_thats_being_analyzed = float(time_digest[1])
+            if time_digest_date in study_dictionary:
+                study_dictionary[time_digest_date] += study_time_thats_being_analyzed
             else:
-                study_dictionary[date_thats_being_analyzed] = study_time_thats_being_analyzed
+                study_dictionary[time_digest_date] = study_time_thats_being_analyzed
 
     # prints a formatted list of all of the study records
     count = 0
@@ -94,3 +94,38 @@ def print_all_work():
         # Print the date with formatted times.
         print(
             f'{count}. {key}={formatting.format_seconds_to_hms(study_dictionary[key])}')
+
+
+def clean_records():
+    '''
+    Iterate through *all* time records and condense the times in single entries for each day.
+    Example:
+    2022-07-02,1800.00
+    2022-07-02,1800.00
+
+    Is Now:
+    2022-07-02,3600.00
+    '''
+
+    time_entry_dict = {}
+
+    # 1. Open the timer_data.txt file.
+    with create_directory.safe_open_read(_filename) as f:
+        f.seek(0)
+        # 2. Read each line and then add each entry to a dictionary.
+        for line in f.readlines():
+            time_digest = line.split(',')
+            # collect the date from the time entry item
+            time_digest_date = time_digest[0]
+            time_digest_seconds = float(time_digest[1])
+            # If the entry already exists, add the sum of time to the current sum for that entry.
+            if time_digest_date in time_entry_dict:
+                time_entry_dict[time_digest_date] += time_digest_seconds
+            # Otherwise, create the entry.
+            else:
+                time_entry_dict[time_digest_date] = time_digest_seconds
+    # 3. Overwrite the previous timer_data.txt file with the "clean" records.
+    with open (_filename, 'w') as f:
+        # method taken from https://stackoverflow.com/questions/3294889/iterating-over-dictionaries-using-for-loops
+        for key in time_entry_dict:
+            f.write(f'{key},{time_entry_dict[key]:.2f}\n')
