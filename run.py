@@ -24,8 +24,6 @@ def main():
         f'It\'s currently { datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S") }')
     # a counter to check where the time is sitting. It will reset each time a break has occured.
     pomodoro_start = time.time()
-    # tracker for how many minute studied. I have to do this due to pauses in the code.
-    total_time_studied = 0
 
     # play sound effect for the beginning of the loop
     playsound('./sounds/yeah-boy-memes-comedy-funny-amusing-jokes-114748.mp3')
@@ -35,12 +33,15 @@ def main():
 
         # checks if the user has been studying for a study period.
         if pomodoro_tracker - pomodoro_start >= STUDY_TIME:
-            # add 25 minutes to total time studied
-            total_time_studied += STUDY_TIME
-
             # play sound effect to alert the user
             playsound('./sounds/pixel-death-66829.mp3')
             print(f"Warning: {MINUTES_FOR_BREAK}-minute break time!")
+
+            # write the study time to the file
+            formatted_runtime = formatting.format_seconds_to_hms(STUDY_TIME)
+            print(f"You just studied for {formatted_runtime}.")
+            # write the studied time to the file
+            time_data.write_new_record(STUDY_TIME)
 
             # pause the program for 5 minutes
             for _ in range(BREAK_TIME):
@@ -63,17 +64,6 @@ def main():
             else:
                 print("Invalid input. Exiting study timer.")
                 break
-
-    # print the time the program ran
-    formatted_runtime = formatting.format_seconds_to_hms(total_time_studied)
-    print(formatted_runtime)
-
-    # Print the date
-    print(f'It is currently {datetime.datetime.now()}')
-
-    # file away the new data
-    time_data.write_new_record(total_time_studied)
-
 
 if __name__ == "__main__":
     main()
