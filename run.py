@@ -10,14 +10,14 @@ from utility import formatting
 
 def main():
     # check if the user passed a desired study time in minutes
-    users_input
+    users_input = None
     
     try:
         # attempt to convert the value to an integer. if it's null, an exception will be thrown
         users_input = int(sys.argv[1].strip()) # strips empty space
     # naked exception
     except: # the user didn't pass another value
-        users_input = None
+        pass
 
     MINUTES_TO_STUDY = users_input if users_input != None else 30 # sets MINUTES_TO_STUDY to what the user specified. if the user didn't specify then set it to 30 minutes.
     MINUTES_FOR_BREAK = 5
