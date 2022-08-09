@@ -1,14 +1,12 @@
 ﻿# Study Timer for Programmers
  ![demo image](./demo/study_timer_demo.jpg?raw=true) <br />
 Have you ever wanted to quickly start a timer in a terminal when you're about to study? This application makes that very simple.
-Just run 'python3 code_timer.py' at the command line and you're set! Follow the on-screen prompt, if you'd like to end the timer.
+Just run 'python3 code_timer.py' at the command line, and it's all right! Follow the on-screen prompt if you'd like to end the timer.
 ## Check time studied
-If you'd just like to see how long you've studied and to not sudy anymore: <br/>
+If you'd like to see how long you've studied and not study anymore: <br/>
     - Run the application. <br />
     - View your 'studied time' at the top. <br />
     - Press CTRL+C to close the app. <br />
-This will ensure you don't add anymore time to your timer for the day.
-### NOTE: This app is very specific to computer science students, but it can be repurposed.
-It's (currently) specific to computer science students because most people don't want to bother with a terminal.
+Exiting will ensure you don't add more time to your timer for the day.
 ### The Pomodoro Update
-Recently, I updated the code to only allow for tracking of time with the Pomodoro study technique. This means you must study for 25 minutes and then have a 5-minute break. In order to get around this, you can still use the "log time" script to add in your study times manually.
+Recently, I updated the codebase to use the Pomodoro study technique. Using the Pomodoro technique requires 25 minutes of studying and a 5-minute break. To get around this new feature, use the "log time" script to add time.
