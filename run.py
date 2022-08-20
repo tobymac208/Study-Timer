@@ -1,6 +1,5 @@
 import time
-import os
-import datetime
+from datetime import datetime
 import sys
 from playsound import playsound
 
@@ -35,7 +34,7 @@ def main():
     time_data.print_todays_practice_progress()
     print('*-----------------------------------*')
     print(
-        f'It\'s currently { datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S") }')
+        f'It\'s currently { datetime.now().strftime("%d/%m/%Y %H:%M:%S") }')
     # a counter to check where the time is sitting. It will reset each time a break has occured.
     pomodoro_start = time.time()
 
@@ -69,7 +68,7 @@ def main():
             if(continue_studying_check.lower() in ['yes', 'y', 'yeah', 'sure']):
                 # reset the start of the time tracking to the current time. example: 35 (pomodoro_tracker) - 35 (pomodoro_start) = 0
                 print(
-                    f'It\'s currently { datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S") }')
+                    f'It\'s currently { datetime.now().strftime("%d/%m/%Y %H:%M:%S") }')
                 playsound(
                     './sounds/yeah-boy-memes-comedy-funny-amusing-jokes-114748.mp3')
                 pomodoro_start = time.time()
