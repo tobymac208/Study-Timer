@@ -1,6 +1,7 @@
 import time
-from datetime import datetime
 import sys
+
+from datetime import datetime
 from playsound import playsound
 
 from file_operations import time_data
