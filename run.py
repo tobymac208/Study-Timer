@@ -21,7 +21,7 @@ def main():
     except: # the user didn't pass another value
         pass
 
-    MINUTES_TO_STUDY = users_input if users_input != None else 30 # sets MINUTES_TO_STUDY to what the user specified. if the user didn't specify then set it to 30 minutes.
+    MINUTES_TO_STUDY = users_input if users_input != None else 25 # sets MINUTES_TO_STUDY to what the user specified. if the user didn't specify then set it to 25 minutes.
     MINUTES_FOR_BREAK = 5
 
     # Pomodoro Technique implementation
@@ -72,7 +72,7 @@ def main():
                 playsound(
                     './sounds/yeah-boy-memes-comedy-funny-amusing-jokes-114748.mp3')
                 pomodoro_start = time.time()
-            elif(continue_studying_check.lower() in ['no', 'n', 'never', 'nah']):
+            elif(continue_studying_check.lower() in ['no', 'n', 'never', 'nah', 'nein']):
                 break
             else:
                 print("Invalid input. Exiting study timer.")
