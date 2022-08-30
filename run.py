@@ -61,6 +61,9 @@ def main():
             for _ in range(BREAK_TIME):
                 time.sleep(1)
 
+            # once the break completes, play a noise to the let the user know
+            playsound('./sounds/Mario-Kart-Race-Start-Gaming-Sound-Effect-HD.mp3')
+
             # after each break, check if the user wants to keep studyig
             continue_studying_check = input(
                 "Hello again! Would you like to keep studying (yes/no)? ").strip()
