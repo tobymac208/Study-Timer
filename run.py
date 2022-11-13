@@ -42,6 +42,9 @@ def main():
         # update the tracker's count
         pomodoro_tracker = time.time()
 
+        # Adds a small sleep statement to cut down on the processing.
+        time.sleep(0.001)
+
         # checks if the user has been studying for a study period.
         if pomodoro_tracker - pomodoro_start >= STUDY_TIME:
             # play sound effect to alert the user
