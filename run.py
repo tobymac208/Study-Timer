@@ -6,6 +6,7 @@ from datetime import datetime
 from file_operations import time_data
 from utility import formatting
 
+from playsound import playsound
 
 def main():
     time_data.clean_records()
@@ -38,6 +39,8 @@ def main():
     pomodoro_start = time.time()
 
     # play sound effect for the beginning of the loop
+    playsound('./sounds/yeah-boy-memes-comedy-funny-amusing-jokes-114748.mp3')
+
     while True:
         # update the tracker's count
         pomodoro_tracker = time.time()
@@ -47,6 +50,7 @@ def main():
 
         # checks if the user has been studying for a study period.
         if pomodoro_tracker - pomodoro_start >= STUDY_TIME:
+            playsound('./sounds/pixel-death-66829.mp3')
             # play sound effect to alert the user
             print(f"Warning: {MINUTES_FOR_BREAK}-minute break time!")
 
@@ -72,6 +76,7 @@ def main():
                 print(
                     f'It\'s currently { datetime.now().strftime("%d/%m/%Y %H:%M:%S") }')
                 pomodoro_start = time.time()
+                playsound('./sounds/Mario-Kart-Race-Start-Gaming-Sound-Effect-HD.mp3')
             elif(continue_studying_check.lower() in ['no', 'n', 'never', 'nah', 'nein']):
                 break
             else:
