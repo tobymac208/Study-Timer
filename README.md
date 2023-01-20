@@ -1,5 +1,5 @@
 ﻿# Study Timer for Programmers
- ![demo image](./demo/study_timer_demo.jpg?raw=true) <br />
+ ![demo image](./demo/study-timer-demo.png?raw=true) <br />
 Have you ever wanted to quickly start a timer in a terminal when you're about to study? This application makes that very simple.
 Just run 'python3 code_timer.py' at the command line, and it's all right! Follow the on-screen prompt if you'd like to end the timer.
 ## Check time studied
